@@ -2,7 +2,8 @@ from itertools import islice
 import music21
 from music21 import note, harmony, expressions
 from torch.utils.data import TensorDataset
-
+from tqdm import tqdm
+import os
 # constants
 SLUR_SYMBOL = '__'
 START_SYMBOL = 'START'
@@ -20,6 +21,14 @@ TIME_SHIFT = 'TS'
 STOP_SYMBOL = 'STOP'
 MAX_VELOCITY = 128
 
+def get_local_datasets():
+    print("Loading datasets...")
+    xmlDatasets = []
+    path_ = f'{os.path.expanduser("~")}/Data/xmlDatasets'
+    for file_ in tqdm(os.listdir(path_)):
+        if not os.path.isdir(file_):
+            xmlDatasets.append(music21.converter.parse(path_+"/"+file_))
+    return xmlDatasets
 
 def standard_name(note_or_rest, voice_range=None):
     """
@@ -77,7 +86,7 @@ class ShortChoraleIteratorGen:
         it = (
             chorale
             for chorale in
-            islice(music21.corpus.chorales.Iterator(), 10)
+            islice(get_local_datasets(), 10)
         )
         return it.__iter__()
 
