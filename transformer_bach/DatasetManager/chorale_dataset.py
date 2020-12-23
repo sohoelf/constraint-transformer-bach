@@ -60,7 +60,7 @@ class ChoraleDataset(MusicDataset):
 
     def iterator_gen(self):
         return (chorale
-                for chorale in self.corpus_it_gen()
+                for chorale in self.corpus_it_gen
                 if self.is_valid(chorale)
                 )
 
