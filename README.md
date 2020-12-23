@@ -3,7 +3,7 @@
 A conda environment is provided in environment.yml.
 Load it with
 ```conda env create -f environment.yml```
-Then you can activate it with
+Then you can activate it with/n
 ```conda activate public_transformer_bach```
 ## 2. Datasets
 On the first run, you need to create datasets(xml/midi/etc.) in `$HOME/Data/xmlDatasets` folder.  
