@@ -103,9 +103,9 @@ def main(train,
             num_workers=num_workers
         )
 
-    melody_constraint = TETRIS_MELODY
+    # melody_constraint = TETRIS_MELODY
     # melody_constraint = LONG_TETRIS_MELODY
-    # melody_constraint = None
+    melody_constraint = None
     scores = transformer.generate(temperature=0.9,
                                   top_p=0.7,
                                   batch_size=3,
