@@ -29,7 +29,7 @@ config = {
     'lr':                          1e-5,
     'batch_size':                  8,
     'num_batches':                 128,
-    'num_epochs':                  2000,
+    'num_epochs':                  1300,
 
     # ======== model ID ========
     'timestamp':                   None,
