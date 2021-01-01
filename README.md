@@ -1,4 +1,4 @@
-# Dataset Augmentation by Negative Harmony Theory for Music Generation (Transformer with constraints on Bach chorales)
+# Dataset Augmentation by Negative Harmony Theory for Music Generation
 ## 1. Environment
 A conda environment is provided in environment.yml.<br>
 Load it with<br>
@@ -9,11 +9,12 @@ Then you can activate it with<br>
 On the first run, you need to create datasets(xml/midi/etc.) in `$HOME/Data/xmlDatasets` folder.  <br>
 ## 3. Dataset Augmentation
 Run<br>
-```python negative.py -m <MODE CLASS> # MODE CLASS =  N | N-PLUS | N-PLUS-PART | N-PLUS-RANDOM ```<br>
-Then the expanded data will be added `$HOME/Data/xmlDatasets`.<br>
+```python NegativeHarmony/negative.py $HOME/Data/xmlDatasets -r -m <MODE CLASS> ```
+(# MODE CLASS =  N | N+ | N+part1 | N+part2 | prepare, Please refer to [sohoelf/NegativeHarmony](https://github.com/sohoelf/NegativeHarmony) for details.)
+Then the expanded data will be added `$HOME/Data/negative_pieces`, then you can put them into `$HOME/Data/xmlDatasets` folder.<br>
 ## 4. Training
-Run<br>
-```python main.py --train --config=transformer_bach/bach_decoder_config.py```<br>
+Before training, modify the hyperparameters in ```transformer_bach/bach_decoder_config.py```, then run<br>
+```python main.py --train --config=transformer_bach/bach_decoder_config.py``` for training.<br>
 When prompted for the creation of the index table of the dataset, enter `index`.<br>
 After building the dataset training should start.<br>
 Models are saved in the `models/` folder.<br>
